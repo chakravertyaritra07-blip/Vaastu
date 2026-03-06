@@ -12,10 +12,10 @@
             --accent-gold: #c5a059;
             --text-main: #e0e0e0;
             --text-sub: #a0a0a0;
-            --vastu-north: #3498db; /* Water */
-            --vastu-east: #f1c40f;  /* Light/Air */
-            --vastu-south: #e74c3c; /* Fire */
-            --vastu-west: #95a5a6;  /* Earth */
+            --vastu-north: #3498db;
+            --vastu-east: #f1c40f;
+            --vastu-south: #e74c3c;
+            --vastu-west: #95a5a6;
         }
 
         body {
@@ -35,13 +35,15 @@
             align-items: center;
             background: linear-gradient(rgba(15,17,19,0.8), rgba(15,17,19,0.8)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
+            background-position: center;
             text-align: center;
             border-bottom: 1px solid var(--accent-gold);
+            padding: 0 20px;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-size: clamp(2rem, 8vw, 4rem);
             color: var(--accent-gold);
             margin: 0;
         }
@@ -52,9 +54,10 @@
             padding: 20px;
         }
 
-        .vastu-grid {
+        /* Fixed Grid for laptop: Exactly 3 columns */
+        .vastu-grid, .color-matrix {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
@@ -77,6 +80,7 @@
             color: var(--accent-gold);
             border-bottom: 1px solid #444;
             padding-bottom: 10px;
+            font-size: 1.5rem;
         }
 
         .tag {
@@ -102,7 +106,6 @@
 
         .detail-item strong { color: var(--text-main); }
 
-        /* CHANGED: BOTTOM SECTION TO DARK THEME */
         .psychology-section {
             background: #0d0f11;
             color: #e0e0e0;
@@ -114,31 +117,31 @@
 
         .psychology-section h2 { 
             font-family: 'Playfair Display', serif; 
-            font-size: 2.5rem; 
+            font-size: clamp(1.8rem, 5vw, 2.5rem); 
             text-align: center; 
             color: var(--accent-gold);
         }
 
         .color-matrix {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
             margin-top: 40px;
         }
 
         .color-swatch {
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
             text-align: center;
-            /* ENSURE TEXT INSIDE LIGHT BOXES IS READABLE */
             color: #1a1c1f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 150px;
         }
 
         .color-swatch p {
             font-weight: 500;
+            margin: 10px 0 0 0;
         }
 
-        /* ENSURE DARK BOX HAS LIGHT TEXT */
         .dark-swatch {
             color: #ffffff !important;
         }
@@ -149,6 +152,23 @@
             background: #000;
             color: var(--text-sub);
             font-size: 0.8rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            /* Tablet: 2 columns */
+            .vastu-grid, .color-matrix {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header { height: 50vh; }
+            .container { margin-top: 20px; }
+            /* Mobile: 1 column */
+            .vastu-grid, .color-matrix {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -161,8 +181,7 @@
 
 <div class="container">
     <div class="vastu-grid">
-        
-        <div class="card" onclick="revealDetails('entrance')">
+        <div class="card">
             <span class="tag north-east">East / North-East</span>
             <h2>The Simhadwara (Entrance)</h2>
             <div class="detail-item"><strong>Width:</strong> Ideal 3.5ft - 4ft. Largest door in house.</div>
@@ -209,7 +228,6 @@
             <div class="detail-item"><strong>Commode Face:</strong> Facing North or South.</div>
             <div class="detail-item"><strong>Ventilation:</strong> North or West windows.</div>
         </div>
-
     </div>
 </div>
 
