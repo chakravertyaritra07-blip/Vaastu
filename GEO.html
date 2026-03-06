@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vastu Compendium | Architectural Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f1113;
+            --bg-secondary: #1a1d21;
+            --accent-gold: #c5a059;
+            --text-main: #e0e0e0;
+            --text-sub: #a0a0a0;
+            --vastu-north: #3498db; /* Water */
+            --vastu-east: #f1c40f;  /* Light/Air */
+            --vastu-south: #e74c3c; /* Fire */
+            --vastu-west: #95a5a6;  /* Earth */
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(15,17,19,0.8), rgba(15,17,19,0.8)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            text-align: center;
+            border-bottom: 1px solid var(--accent-gold);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--accent-gold);
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -50px auto 0;
+            padding: 20px;
+        }
+
+        .vastu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+        }
+
+        .card h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-gold);
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .north-east { background: var(--vastu-north); color: white; }
+        .south-east { background: var(--vastu-south); color: white; }
+        .south-west { background: var(--vastu-west); color: white; }
+        .north-west { background: var(--vastu-east); color: black; }
+
+        .detail-item {
+            margin: 15px 0;
+            font-size: 0.95rem;
+            color: var(--text-sub);
+        }
+
+        .detail-item strong { color: var(--text-main); }
+
+        /* CHANGED: BOTTOM SECTION TO DARK THEME */
+        .psychology-section {
+            background: #0d0f11;
+            color: #e0e0e0;
+            padding: 60px 20px;
+            margin-top: 100px;
+            border-radius: 20px 20px 0 0;
+            border-top: 3px solid var(--accent-gold);
+        }
+
+        .psychology-section h2 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.5rem; 
+            text-align: center; 
+            color: var(--accent-gold);
+        }
+
+        .color-matrix {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .color-swatch {
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            /* ENSURE TEXT INSIDE LIGHT BOXES IS READABLE */
+            color: #1a1c1f;
+        }
+
+        .color-swatch p {
+            font-weight: 500;
+        }
+
+        /* ENSURE DARK BOX HAS LIGHT TEXT */
+        .dark-swatch {
+            color: #ffffff !important;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #000;
+            color: var(--text-sub);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>The Vastu Compendium</h1>
+    <p>Spatial Harmony & Bio-Magnetic Architecture for the Modern Home</p>
+</header>
+
+<div class="container">
+    <div class="vastu-grid">
+        
+        <div class="card" onclick="revealDetails('entrance')">
+            <span class="tag north-east">East / North-East</span>
+            <h2>The Simhadwara (Entrance)</h2>
+            <div class="detail-item"><strong>Width:</strong> Ideal 3.5ft - 4ft. Largest door in house.</div>
+            <div class="detail-item"><strong>Design:</strong> Avoid cracked wood; use Teak or Sheesham.</div>
+            <div class="detail-item"><strong>Shoe Racks:</strong> Place in West or North-West; never in the North-East.</div>
+        </div>
+
+        <div class="card">
+            <span class="tag south-west">South-West</span>
+            <h2>Master Suite</h2>
+            <div class="detail-item"><strong>Bed Placement:</strong> South-West corner; headboard against South or West wall.</div>
+            <div class="detail-item"><strong>Sleeping Side:</strong> Head must face South (Longevity) or East (Memory).</div>
+            <div class="detail-item"><strong>Heavy Furniture:</strong> Wardrobes & Lockers against South/West walls.</div>
+            <div class="detail-item"><strong>Mirrors:</strong> Never reflect the bed; place on North/East walls.</div>
+        </div>
+
+        <div class="card">
+            <span class="tag south-east">South-East</span>
+            <h2>Culinary & Dining</h2>
+            <div class="detail-item"><strong>Stove (Fire):</strong> South-East. Cook faces East.</div>
+            <div class="detail-item"><strong>Sink (Water):</strong> North-East or North. Maintain gap from fire.</div>
+            <div class="detail-item"><strong>Dining:</strong> West or North-West. Wood tables only.</div>
+        </div>
+
+        <div class="card">
+            <span class="tag north-west">North / East</span>
+            <h2>Study & Office Cabins</h2>
+            <div class="detail-item"><strong>Direction:</strong> Desk faces North or East for concentration.</div>
+            <div class="detail-item"><strong>Lighting:</strong> Natural light from the left.</div>
+            <div class="detail-item"><strong>Decor:</strong> Indoor fountain in the North-East for mental clarity.</div>
+        </div>
+
+        <div class="card">
+            <span class="tag north-west">North-West / North</span>
+            <h2>Pool, Parking & Lawn</h2>
+            <div class="detail-item"><strong>Swimming Pool:</strong> North or East quadrant for "Water" flow.</div>
+            <div class="detail-item"><strong>Car Parking:</strong> North-West (Movement) or South-East (Heat/Metal).</div>
+            <div class="detail-item"><strong>Stairs:</strong> South-West. Always climb clockwise.</div>
+        </div>
+
+        <div class="card">
+            <span class="tag north-west">North-West / South-East</span>
+            <h2>Bath & Restrooms</h2>
+            <div class="detail-item"><strong>Commode Face:</strong> Facing North or South.</div>
+            <div class="detail-item"><strong>Ventilation:</strong> North or West windows.</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="psychology-section">
+    <h2>Color Psychology & Interior Mending</h2>
+    <p style="text-align:center; max-width: 800px; margin: 0 auto; color: var(--text-sub);">Using Vastu colors isn't just tradition; it’s about the emotional resonance of space.</p>
+    
+    <div class="color-matrix">
+        <div class="color-swatch" style="background: #fdf5e6; border: 1px solid #ddd;">
+            <strong>Cream/Off-White</strong>
+            <p>Peace & Harmony. Best for Master Bedrooms to induce sleep.</p>
+        </div>
+        <div class="color-swatch" style="background: #e1f5fe;">
+            <strong>Sky Blue</strong>
+            <p>Trust & Calm. Ideal for North-facing living rooms.</p>
+        </div>
+        <div class="color-swatch" style="background: #fff9c4;">
+            <strong>Pale Yellow</strong>
+            <p>Intellect & Energy. Perfect for Study rooms and Kitchens.</p>
+        </div>
+        <div class="color-swatch" style="background: #e8f5e9;">
+            <strong>Soft Green</strong>
+            <p>Growth & Healing. Best for Kids' rooms in the North-West.</p>
+        </div>
+        <div class="color-swatch" style="background: #fce4ec;">
+            <strong>Light Pink</strong>
+            <p>Compassion. Excellent for Guest rooms to foster warmth.</p>
+        </div>
+        <div class="color-swatch dark-swatch" style="background: #5d4037; border: 1px solid #444;">
+            <strong>Chocolate/Wood</strong>
+            <p>Grounding. Use for heavy furniture in the South-West.</p>
+        </div>
+    </div>
+
+    <h3 style="margin-top:50px; color: var(--accent-gold);">Subtle Improvement Tips:</h3>
+    <ul style="color: var(--text-sub);">
+        <li><strong style="color: var(--text-main);">Artworks:</strong> Avoid paintings of war or sadness. Use nature or spiritual motifs.</li>
+        <li><strong style="color: var(--text-main);">Indoor Fountains:</strong> Place in North-East. Ensure the water flows *toward* the center of the house.</li>
+        <li><strong style="color: var(--text-main);">Heavy Furniture:</strong> TVs and large cabinets must be on South or West walls to maintain the home's "Gravity Center".</li>
+    </ul>
+</div>
+
+<footer>
+    &copy; 2026 Architectural Research - Vastu Integrated Studies. | Created for B.Arch Portfolio.
+</footer>
+
+<script>
+    function revealDetails(id) {
+        console.log("Researching details for section: " + id);
+    }
+</script>
+
+</body>
+</html>
